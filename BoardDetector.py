@@ -95,11 +95,13 @@ class ContourBoardDetector():
         edges = self.apply_edge_detection(image)
     
         if not self.has_grid_pattern(edges):
+            self.show_image(image, "No grid")
             print("No grid pattern found.")
             return None
     
         contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         if not contours:
+            self.show_image(image, "No Contours")
             print("No contours found.")
             return None
 
